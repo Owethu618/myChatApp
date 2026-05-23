@@ -5,8 +5,8 @@
 package com.mycompany.mychatapp;
 
 import java.util.Scanner;
-//import org.json.JSONObject;
-//import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONArray;
 
 /**
  *
@@ -72,4 +72,116 @@ public class MainApp {
          String loginMessage = login.returnLoginStatus(loggedIn);
          System.out.println("Login successful");
     }
+    
+    if(loggedIn =){
+    //Setting a variable to know when the loop should begin and end
+    boolean running = true;
+    Scanner input = new Scanner(System.in);
+    Messages messages = new Messages();
+    JSONObject obj = new JSONObject();
+    
+    //Creating the while loop
+    while (running)
+    {
+    System.out.println("===Messages Menu ===");
+    System.out.println("Choose which option you would like to go with");
+    
+    System.out.println("1) Send Messages");
+    System.out.println("2) Show recently sent messages");
+    System.out.println("3) Quit");
+    
+    // prompting the user to enter his or her choice
+    System.out.println("Please enter your preferred choice");
+    
+    // collecting the user's input
+    int choice = input.nextInt();
+    
+    switch(choice)
+    {
+        case 1:
+           System.out.println("How many messages do you want to send");
+           int numMessages = input.nextInt();
+           int numMessages = 0;
+           for(int i = 0; i < numMessages; i++){
+        int messageNumber = i + 1;
+        System.out.println("=== Message" + numMessages +"===");
+}
+       System.out.println("Enter recepient's number");
+       String recipient = input.nextLine();
+    
+    //Checking if recipient number was entered correctly
+     String feedback = messages.recipient(recipient);
+    System.out.println(feedback);
+    
+       System.out.println("Enter your message");
+       String messageTextInput = input.nextLine();
+       
+       //Checking if the user has exceeded 250 characters
+       if(messageTextInput.length() > 250){
+          int over = messageTextInput.length() - 250;
+          System.out.println("You have exceeded your character limit of 250 characters");
+}else{
+    System.out.println("Message ready to send");
+}
+     
+    //Asking user if he or she wants to "Send", "Disregard", or "Store" message
+    public void String SentMessage(){
+    System.out.println("What would you like to do with this message?");
+    System.out.println("1) Send Message");
+    System.out.println("2) Disregard Message");
+    System.out.println("3) Store message to send later");
+    
+    int option = 0;
+    
+    switch(option){
+        
+        case 1: 
+            System.out.println("Message successfully sent");
+            break;
+            
+        case 2:
+            System.out.println("Press O to delete the message");
+            break;
+            
+        case 3: 
+            storeMessage();
+            System.out.println("Message successfully Stored");
+            
+        default: 
+            System.out.println("Entered invalid option");
+            break;
+            
+    }
+    
+    }
+    
+       
+    
+       
+           break;
+        
+        case 2: 
+           System.out.println("Coming Soon");
+           break;
+        
+        case 3: 
+           System.out.println("Quit");
+           running = false;
+    
+    default:
+       System.out.println("Invalid option selected, not available in message menu");
+                   
+}
+    
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
 }
