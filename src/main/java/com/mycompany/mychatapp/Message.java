@@ -21,17 +21,24 @@ public class Message {
     private int messageNumber;
     private String recipient;
     private String MessageText;
+
+    public Message(String messageID, int messageNumber, String recipient, String MessageText) {
+        this.messageID = messageID;
+        this.messageNumber = messageNumber;
+        this.recipient = recipient;
+        this.MessageText = MessageText;
+    }
     
     
     
     //Checking if messageID contains 10 characters using if statements
     
-    private boolean checkMessageID(String messageID){
+    public boolean checkMessageID(String messageID){
         return messageID.length() <=10;
     }
     
     //Generating the MessageId
-    private String generateMessageID(){
+    public String generateMessageID(){
         
         Random random = new Random();
         StringBuilder sb = new StringBuilder();
@@ -111,7 +118,7 @@ public class Message {
        return "No action has been taken";
    }
 
-    private boolean numMessages(int TotalMessagesSent) {
+    public boolean numMessages(int TotalMessagesSent) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
