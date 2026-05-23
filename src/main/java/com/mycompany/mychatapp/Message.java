@@ -21,6 +21,10 @@ public class Message {
     private int messageNumber;
     private String recipient;
     private String MessageText;
+    private String printMessages;
+    private int numMessages;
+    private String CreateMessageHash;
+    public String SentMessages;
 
     public Message(String messageID, int messageNumber, String recipient, String MessageText) {
         this.messageID = messageID;
@@ -116,6 +120,12 @@ public class Message {
        }
        
        return "No action has been taken";
+   }
+   
+   private String printMessages(){
+       return "messageID:" + messageID + "\n" + "Message Number" + numMessages + "\n" +
+               "Recipient:" + recipient + "\n" + "Message" + MessageTextInput + "\n" + 
+               "Message Hash" +  CreateMessageHash + "\n" + "Status" + SentMessages;
    }
 
     public boolean numMessages(int TotalMessagesSent) {

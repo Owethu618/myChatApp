@@ -137,6 +137,7 @@ public class MainApp {
         
         case 1: 
             System.out.println("Message successfully sent");
+            printMessages()
             break;
             
         case 2:
