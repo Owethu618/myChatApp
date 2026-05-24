@@ -61,7 +61,7 @@ public class MessageTest {
     public void testMessageHashNotEmpty(){
         Message message = new Message("0:1:Hi:Thanks",1, "+27796599327", "Hello");
         asserNotNull(message.CreateMessageHash(MessageIdPart, 0, firstWord, lastWord));
-        assertFalse(message.getCreateMessageHash().isEmpty);
+        assertFalse(message.getCreateMessageHash().isEmpty());
     
 }
     
