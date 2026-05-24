@@ -38,15 +38,17 @@ public class MessageTest {
     //Checking for invalid recipient cell 
     @Test
     public void testInvalidRecipient(){
-        Message message = new Message("0:1:Hi:Thanks",1,"0796599327", "Hi, good to here feom you");
-        String recipient = "0796499327";
-        assertFalse(message.CheckRecipient(recipient));
+        Message message = new Message("0:1:Hi:Thanks",1,"0796599327", "Hi, good to here from you");
+        String recipient = "0796599327";
+        assertFalse(message.checkRecipient(recipient));
     }
     //Test whether the method for messageText works
     @Test
     public void testMessageLengthValid(){
         Message message = new Message("0:1:Hi:Thanks",1,"+27796599327", "Hi, good to here feom you");
-        asserEquals("Message ready to send",message.MessageTextInput.length()== length);
+        //Defining the length
+        int length = 250;
+        assertEquals("Message ready to send",message.MessageTextInput.length()== length);
     
 }
     //Test whether whether the method for when the message Text is exceeded
@@ -84,7 +86,7 @@ public class MessageTest {
         Message.clearSentMessages();
         assertEquals(0,Message.getSentMessages().size());
     }
-    
+
     
     
     
