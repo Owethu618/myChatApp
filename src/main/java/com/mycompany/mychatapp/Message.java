@@ -19,22 +19,21 @@ public class Message {
     
     private String messageID;
     private int messageNumber;
-    private String recipient;
+    public String recipient;
     private String MessageText;
     public String printMessages;
     private int numMessages;
     public String CreateMessageHash;
-    public String SentMessages;
-    
-    
-
+    public String sentMessages;
+   
+    // Constructor in order to be able to call my methods to the MessageTest
     public Message(String messageID, int messageNumber, String recipient, String MessageText) {
         this.messageID = messageID;
         this.messageNumber = messageNumber;
         this.recipient = recipient;
         this.MessageText = MessageText;
     }
-    
+
     
     
     //Checking if messageID contains 10 characters using if statements
@@ -62,7 +61,7 @@ public class Message {
     
     //Recipient cell validation
     
-    private boolean recipient(String recipient){
+    public boolean checkRecipient(String recipient){
         return recipient.contains("+27") && recipient.length() >=10;
     }
     
@@ -97,7 +96,7 @@ public class Message {
             return "Must not exceed the length of 250 characters";
         }
         
-        if(!recipient(recipient)){
+        if(!checkRecipient(recipient)){
             return "Recipient number incorrectly entered must contain the international code and must be at least 10 characters long";
         }
         
@@ -108,9 +107,10 @@ public class Message {
        
     }
   
-   public String SentMessages(boolean SendMessages, boolean DisregardMessage, boolean StoreMessage ){
+   public String sentMessages(boolean SendMessages, boolean DisregardMessage, boolean StoreMessage ){
        if(SendMessages){
            return "Message successfully sent";
+           
        }
        
        if(DisregardMessage){
@@ -127,7 +127,7 @@ public class Message {
    public String printMessages(){
        return "messageID:" + messageID + "\n" + "Message Number" + numMessages + "\n" +
                "Recipient:" + recipient + "\n" + "Message" + MessageTextInput + "\n" + 
-               "Message Hash" +  CreateMessageHash + "\n" + "Status" + SentMessages;
+               "Message Hash" +  CreateMessageHash + "\n" + "Status" + sentMessages;
    }
 
     public boolean numMessages(int TotalMessagesSent) {
