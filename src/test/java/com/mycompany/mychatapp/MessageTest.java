@@ -22,7 +22,7 @@ public class MessageTest {
     
     @Test
     public void testMessageIDLength(){
-        Message message = new Message(3, "+27596946645", "Hello World");
+        Message message = new Message("0:1:Hi:Thanks",3, "+27596946645", "Hello World");
         assertEquals(10, message.generateMessageID().length());
     }
     
@@ -38,9 +38,9 @@ public class MessageTest {
     //Checking for invalid recipient cell 
     @Test
     public void testInvalidRecipient(){
-        Messages messages = new Message();
+        Message message = new Message("0:1:Hi:Thanks",1,"0796599327", "Hi, good to here feom you");
         String recipient = "0796499327";
-        assertFalse(message.checkRecipient(recipient));
+        assertFalse(message.CheckRecipient(recipient));
     }
     //Test whether the method for messageText works
     @Test
@@ -60,8 +60,14 @@ public class MessageTest {
     @Test
     public void testMessageHashNotEmpty(){
         Message message = new Message("0:1:Hi:Thanks",1, "+27796599327", "Hello");
-        asserNotNull(message.CreateMessageHash(MessageIdPart, 0, firstWord, lastWord));
-        assertFalse(message.getCreateMessageHash().isEmpty());
+        //Defining the variables String messageIDPart, String firstWord, and String lastWord
+        String MessageIdPart = "0:1";
+        int sequence = 0;
+        String firstWord = "Hi";
+        String lastWord = "Thanks";
+        
+        assertNotNull(message.CreateMessageHash(MessageIdPart, 0, firstWord, lastWord));
+        assertFalse(message.CreateMessageHash(MessageIdPart, 0, firstWord, lastWord).isEmpty());
     
 }
     
