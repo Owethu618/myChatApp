@@ -5,8 +5,6 @@
 package com.mycompany.mychatapp;
 
 import java.util.Scanner;
-import org.json.JSONObject;
-import org.json.JSONArray;
 
 /**
  *
@@ -70,16 +68,15 @@ public class MainApp {
          
          //Displaying the login message
          String loginMessage = login.returnLoginStatus(loggedIn);
-         System.out.println("Login successful");
-    }
+         System.out.println(loginMessage);
     
-    if(loggedIn =){
+    
+    if(loggedIn){
+    
+        System.out.println("Welcome to QuickChat");
     //Setting a variable to know when the loop should begin and end
     boolean running = true;
-    Scanner input = new Scanner(System.in);
-    Messages messages = new Messages();
-    JSONObject obj = new JSONObject();
-    
+   
     //Creating the while loop
     while (running)
     {
@@ -95,26 +92,28 @@ public class MainApp {
     
     // collecting the user's input
     int choice = input.nextInt();
+    input.nextLine();
     
     switch(choice)
     {
         case 1:
            System.out.println("How many messages do you want to send");
            int numMessages = input.nextInt();
-           int numMessages = 0;
            for(int i = 0; i < numMessages; i++){
         int messageNumber = i + 1;
         System.out.println("=== Message" + numMessages +"===");
 }
        System.out.println("Enter recepient's number");
        String recipient = input.nextLine();
-    
-    //Checking if recipient number was entered correctly
-     String feedback = messages.recipient(recipient);
-    System.out.println(feedback);
+   
     
        System.out.println("Enter your message");
        String messageTextInput = input.nextLine();
+       
+       Message message = new Message( messageID, messageNumber, recipient, messageText);
+       
+       //Displaying the recipient validation result
+       System.out.println(message.checkRecipient());
        
        //Checking if the user has exceeded 250 characters
        if(messageTextInput.length() > 250){
@@ -123,58 +122,43 @@ public class MainApp {
 }else{
     System.out.println("Message ready to send");
 }
-     
-    //Asking user if he or she wants to "Send", "Disregard", or "Store" message
-    public void String SentMessage(){
-    System.out.println("What would you like to do with this message?");
-    System.out.println("1) Send Message");
-    System.out.println("2) Disregard Message");
-    System.out.println("3) Store message to send later");
-    
-    int option = 0;
-    
-    switch(option){
-        
-        case 1: 
-            System.out.println("Message successfully sent");
-            printMessages()
-            break;
-            
+       
+       //Continuing only if inputs are valid
+       if(message.checkRecipient().equals("Recipient cellphone number successfully captured") && message.MessageTextInput.equals("Message ready to send")){
+           //Asking the user what to do with the message
+           String result = message.sentMessage();
+           
+           //Printing the message details
+           System.out.println(result);
+           
+           //Printing out the details of the messages of the user
+           System.out.println(message.printMessages());
+           break;
+       }
         case 2:
-            System.out.println("Press O to delete the message");
-            break;
-            
+             
+        //Feature has not yet been created
+         System.out.println("Coming Soon");
+    
+        //Display total of the messages sent
+        System.out.println("Total messages sent: " + message.returnTotalMessagesSent());
+        break;
+    
         case 3: 
-            storeMessage();
-            System.out.println("Message successfully Stored");
-            
-        default: 
-            System.out.println("Entered invalid option");
-            break;
-            
-    }
-    
-    }
-    
-       
-    
-       
-           break;
         
-        case 2: 
-           System.out.println("Coming Soon");
-           break;
+        //Exit message
+        System.out.println("Exiting QuickChat...");
+    
+        //Stopping the while loop
+        running = false;
+      
+    
+    
         
-        case 3: 
-           System.out.println("Quit");
-           running = false;
-    
-    default:
-       System.out.println("Invalid option selected, not available in message menu");
-                   
-}
     
 }
+        
+         
     
     
     
@@ -184,5 +168,7 @@ public class MainApp {
     
     
     
+}  
 }
 }
+
