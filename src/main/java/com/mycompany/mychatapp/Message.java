@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.Random;
 import org.json.JSONObject;
 import org.json.JSONArray;
+import java.util.Scanner;
 public class Message {
     
     //Decalaring variables that we are going to use.
@@ -25,6 +26,7 @@ public class Message {
     private int numMessages;
     public String CreateMessageHash;
     public String sentMessages;
+    public String messageStatus;
    
     // Constructor in order to be able to call my methods to the MessageTest
     public Message(String messageID, int messageNumber, String recipient, String MessageText) {
@@ -61,8 +63,13 @@ public class Message {
     
     //Recipient cell validation
     
-    public boolean checkRecipient(String recipient){
-        return recipient.contains("+27") && recipient.length() >=10;
+    public String checkRecipient(){
+        //Checking whether recipient number stsrts with +27 and if the length is correct
+        if(recipient.startsWith("+27") && recipient.length() >=12){
+            return "Recipient cellphone number is successfully captured";
+        }else{
+            return "Recipient cell phone number is incorrectly formatted or does not contain international code";
+        }
     }
     
     //Message Text validation
@@ -75,15 +82,25 @@ public class Message {
     
     
     //Generating a message hash
-    String MessageIdPart = messageID.substring(0,2);
-    String []words = MessageText.split(" ");
-    String firstWord = words[0];
-    String lastWord = words[words.length -1];
-    public String CreateMessageHash(String MessageIdPart ,int numMessages, String firstWord , String lastWord) {
-    String CreateMessageHash = MessageIdPart + ":" + numMessages + firstWord + lastWord;
-    
-    return CreateMessageHash.toUpperCase();
-}
+    public String createMessageHash(){
+        //Getting the first two digits of the messageID
+        String MessageIdPart = messageID.substring(0,2);
+        
+        //Split message into words
+        String[] words = MessageTextInput.split(" ");
+        
+        //Getting the first word
+        String firstWord = words[0];
+        
+        //Get last word
+        String lastWord = words[words.length - 1];
+        
+        //Generating the messageHash
+        String messageHash = MessageIdPart + ":" + numMessages + ":" + firstWord + lastWord;
+        
+        //Returning messageHash in UpperCase
+        return messageHash.toUpperCase();
+    }
     
    private int TotalMessagesSent = 0;
    
@@ -96,10 +113,6 @@ public class Message {
             return "Must not exceed the length of 250 characters";
         }
         
-        if(!checkRecipient(recipient)){
-            return "Recipient number incorrectly entered must contain the international code and must be at least 10 characters long";
-        }
-        
         if(!numMessages(TotalMessagesSent)){
             return "Total messages don't match the number of messages";
         }
@@ -107,22 +120,48 @@ public class Message {
        
     }
   
-   public String sentMessages(boolean SendMessages, boolean DisregardMessage, boolean StoreMessage ){
-       if(SendMessages){
-           return "Message successfully sent";
-           
-       }
-       
-       if(DisregardMessage){
-           return "Press 0 to delete the message";
-       }
-       
-       if(StoreMessage){
-           return "Message successfully stored";
-       }
-       
-       return "No action has been taken";
-   }
+  public String sentMessage(){
+      
+      Scanner input = new Scanner(System.in);
+      //Displaying menu options
+      System.out.println("What would you like to do with this message?");
+      System.out.println("1) Send Message");
+      System.out.println("2) Disregard message");
+      System.out.println("3) Store Message to send later");
+      
+      //User input option
+      int choice = input.nextInt();
+      
+      //Switch statement that handles options
+      switch(choice)
+      {
+          case 1: 
+              //updating message status
+              messageStatus = "Sent";
+              
+              //Increasing totalMessages Count
+              TotalMessagesSent++;
+              
+              return "Message successfully sent";
+              
+          case 2:
+              messageStatus = "Disregard";
+              
+              return "Press 0 to delete the message";
+              
+              
+          case 3:
+              //Setting the message status
+              messageStatus = "Store";
+              
+              //Saving message towards JSON file
+              storeMessage();
+              
+              //Deals with wrong menu options being entered
+          default:
+              return "Invalid option entered";
+      }
+  }
    
    public String printMessages(){
        return "messageID:" + messageID + "\n" + "Message Number" + numMessages + "\n" +
