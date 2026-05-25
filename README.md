@@ -6,7 +6,7 @@
 - MessageTest
 
   ## Classes
-  ###Login.java
+  ### Login.java
   - On my Login.java I only updated my Login class by adding  the variables of FirstName and LastName. I added validations to ensure a user enters the correct format
     for the firstName and lastName.
 
