@@ -1,25 +1,25 @@
-#ChatApp Part2 Description
-##Classes Used in Part2
+# ChatApp Part2 Description
+## Classes Used in Part2
 - Login.java
 - MainApp.java
 - Message.java
 - MessageTest
 
-  ##Classes
+  ## Classes
   ###Login.java
   - On my Login.java I only updated my Login class by adding  the variables of FirstName and LastName. I added validations to ensure a user enters the correct format
     for the firstName and lastName.
 
-    ###MainApp
+    ### MainApp
     - In MainApp I also updated my code from Part 1 by adding the code required for Part 2. So I made use of While loops to ensure the user enters the following details
       correctly: messageID, messageHash, and other variables.
 
-    ###Message.java
+    ### Message.java
     - In Message.java , I added the following methods: String checkMessageID, String CheckRecipient, String CreateMessageHash, String PrintMessage and String SentMessage.
     - All of these are to all a user to enter a recipient cellphone number then send a message to that number after that ask the user to either Send , Disregard or Store the message.
     - The message will be stored on JSON. After that the user will exit the chatApp.
 
-    ###MessageTest
+    ### MessageTest
     - In MessageTest , this is where I test all my methods to check if they work well.
    
       
