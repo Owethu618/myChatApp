@@ -167,13 +167,16 @@ public class Login {
     
     //Login User
     public boolean loginUser(String username, String password){
+        if(this.username == null|| this.username.isEmpty()){
+            System.out.println("False, username needs to be entered");
+        }
         return this.username.equals(username) && this.password.equals(password);
     }
     
     //Return Login Status
     public String returnLoginStatus(boolean success) {
         if (success) {
-            return "Welcome" + username + "it is great to see you again";
+            return "Welcome " + username + " ,it is great to see you again";
         } else {
             return "Username or password is invalid, please try again";
         }
