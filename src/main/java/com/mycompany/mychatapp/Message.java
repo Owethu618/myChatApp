@@ -130,8 +130,12 @@ public class Message {
             case 1:
                 markAsSent();
                 return "Message successfully sent";
+                sentMessages.add(messageStatus);
+                messageIDs.add(messageID);
+                messageHashes.add(CreateMessageHash);
             case 2:
                 this.messageStatus = "Disregard";
+                disregardedMessages.add(messageStatus);
                 return "Press 0 to delete the message";
             case 3:
                 this.messageStatus = "Store";
