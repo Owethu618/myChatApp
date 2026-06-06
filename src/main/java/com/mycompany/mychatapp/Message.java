@@ -147,8 +147,12 @@ public class Message {
     }
 
     public String printMessages() {
+<<<<<<< Updated upstream
         String currentHash = createMessageHash();
         this.printMessages = "messageID:" + messageID + "\nMessage Number:" + messageNumber + "\nRecipient:" + recipient + "\nMessage:" + MessageTextInput + "\nMessage Hash:" + currentHash + "\nStatus:" + (messageStatus == null ? "Pending" : messageStatus);
+=======
+        this.printMessages = "Message ID:" + messageID + "\nMessage Hash:" + createMessageHash() + "\nRecipient:" + recipient + "\nMessage:" + MessageTextInput;
+>>>>>>> Stashed changes
         return this.printMessages;
     }
 
