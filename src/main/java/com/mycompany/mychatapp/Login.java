@@ -158,7 +158,7 @@ public class Login {
         this.password = password;
         this.phoneNumber = phoneNumber;
         
-        return "User is successfully registerd";
+        return "User registered successfully";
         
         
         
