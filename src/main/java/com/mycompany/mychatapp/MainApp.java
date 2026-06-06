@@ -4,6 +4,12 @@
  */
 package com.mycompany.mychatapp;
 
+import static com.mycompany.mychatapp.Message.deleteByHash;
+import static com.mycompany.mychatapp.Message.displayFullReport;
+import static com.mycompany.mychatapp.Message.displayLongestMessage;
+import static com.mycompany.mychatapp.Message.displayStoredMessages;
+import static com.mycompany.mychatapp.Message.searchByMessageID;
+import static com.mycompany.mychatapp.Message.searchByRecipient;
 import java.util.Scanner;
 //import org.json.JSONObject;
 //import org.json.JSONArray;
@@ -133,19 +139,52 @@ public class MainApp {
 
                 case 4:
                     System.out.println("4) Stored Messages");
-                    StoredMessages();
-                    break;
+                    System.out.println("a) Display all stored messages");
+                    System.out.println("b) Display longest message");
+                    System.out.println("c) Search by messageID");
+                    System.out.println("d) Search by recipient");
+                    System.out.println("e) Delete by message Hash");
+                    System.out.println("f) Display full report");
 
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+                String rawChoice = input.hasNextLine() ? input.nextLine().trim().toLowerCase() : "";
+                char subChoice = rawChoice.isEmpty() ? ' ' : rawChoice.charAt(0);
+                
+                
+                switch (subChoice) {
+                    case 'a':
+                        System.out.println("a) Display all stored messages");
+                        Message.displayStoredMessages();
+                        //return "Stored messages listed";
+                    case 'b':
+                        System.out.println("b) Display longest message");
+                        Message.displayLongestMessage();
+                    case 'c':
+                        System.out.println("c) Search by messageID");
+                        String id = input.nextLine();
+                        Message.searchByMessageID(id);
+                    case 'd':
+                        System.out.println("d) Search by recipient");
+                        String recipient = input.nextLine();
+                        Message.searchByRecipient(recipient);
+                    case 'e':
+                        System.out.println("e) Delete by message Hash");
+                        String Hash = input.nextLine();
+                        Message.deleteByHash(Hash);
+                    case 'f':
+                        System.out.println("f) Display full report");
+                        Message.displayFullReport();
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
                     break;
+                       
+                } 
+
+                
+                    
             }
         }
 
         input.close();
-    }
-
-    private static void StoredMessages() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
