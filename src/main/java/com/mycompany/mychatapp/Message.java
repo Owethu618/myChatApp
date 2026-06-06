@@ -27,7 +27,7 @@ public class Message {
     public String printMessages;
 
     // Declaration of Arrays
-    private static final List<String> sentMESSAGES = new ArrayList<>();
+    private static  List<String> sentMESSAGES = new ArrayList<>();
     private static List<String> disregardedMessages = new ArrayList<>();
     private static List<String> storedMessages = new ArrayList<>();
     private static List<String> messageHashes = new ArrayList<>();
@@ -129,10 +129,10 @@ public class Message {
         switch (choice) {
             case 1:
                 markAsSent();
-                return "Message successfully sent";
-                sentMessages.add(messageStatus);
+                sentMESSAGES.add(messageStatus);
                 messageIDs.add(messageID);
                 messageHashes.add(CreateMessageHash);
+                return "Message successfully sent";
             case 2:
                 this.messageStatus = "Disregard";
                 disregardedMessages.add(messageStatus);
