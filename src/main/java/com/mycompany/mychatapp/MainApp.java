@@ -138,6 +138,7 @@ public class MainApp {
                     break;
 
                 case 4:
+                    System.out.println("====Sent Messages Menu====");
                     System.out.println("4) Stored Messages");
                     System.out.println("a) Display all stored messages");
                     System.out.println("b) Display longest message");
@@ -145,6 +146,7 @@ public class MainApp {
                     System.out.println("d) Search by recipient");
                     System.out.println("e) Delete by message Hash");
                     System.out.println("f) Display full report");
+                   
 
                 String rawChoice = input.hasNextLine() ? input.nextLine().trim().toLowerCase() : "";
                 char subChoice = rawChoice.isEmpty() ? ' ' : rawChoice.charAt(0);
@@ -174,6 +176,7 @@ public class MainApp {
                         System.out.println("f) Display full report");
                         Message.displayFullReport();
                         break;
+                        
                     default:
                         System.out.println("Invalid choice. Please try again.");
                     break;
