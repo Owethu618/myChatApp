@@ -266,7 +266,7 @@ public class Message {
             return "messageHash not found";
         }
         
-        //Dispay a full report
+        //Display a full report
         public static String displayFullReport(){
             StringBuilder report = new StringBuilder();
             report.append("====Full Message Report ====\n");

@@ -136,7 +136,7 @@ public class MainApp {
                     System.out.println("Exiting QuickChat...");
                     running = false;
                     break;
-
+          //Switch Case for stored messages, allowing the user to choose from the Stored Messages menu.
                 case 4:
                     System.out.println("====Sent Messages Menu====");
                     System.out.println("4) Stored Messages");
@@ -156,22 +156,27 @@ public class MainApp {
                     case 'a':
                         System.out.println("a) Display all stored messages");
                         Message.displayStoredMessages();
-                        //return "Stored messages listed";
+                        
+                        break;
                     case 'b':
                         System.out.println("b) Display longest message");
                         Message.displayLongestMessage();
+                        break;
                     case 'c':
                         System.out.println("c) Search by messageID");
                         String id = input.nextLine();
                         Message.searchByMessageID(id);
+                        break;
                     case 'd':
                         System.out.println("d) Search by recipient");
                         String recipient = input.nextLine();
                         Message.searchByRecipient(recipient);
+                        break;
                     case 'e':
                         System.out.println("e) Delete by message Hash");
                         String Hash = input.nextLine();
                         Message.deleteByHash(Hash);
+                        break;
                     case 'f':
                         System.out.println("f) Display full report");
                         Message.displayFullReport();
@@ -179,7 +184,7 @@ public class MainApp {
                         
                     default:
                         System.out.println("Invalid choice. Please try again.");
-                    break;
+                        break;
                        
                 } 
 
