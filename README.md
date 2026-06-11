@@ -21,5 +21,17 @@
 
     ### MessageTest
     - In MessageTest , this is where I test all my methods to check if they work well.
+
+      # myChatApp-Part3
+      ## Edited classes in order to include Arrays
+      ### Message.java
+      - In Message.java , I started forth by declaring my arrays, then I included methods to populate my Arrays, I then did my mothods for the sub-menu that is   required and then I added a block of code for the sub-menu including my methods for the sub-menu.
+     
+     ### MainApp.java
+    - I then added the sub-menu again in the MainApp class , this is to ensure that all my methods correspond with my methods in Message.java class.
+     ### MessageTest
+    - In MessageTest I ended six additional test this is to test if my six additional methods for my sub-menu are correct and that they work properly.
+
+      
    
       
